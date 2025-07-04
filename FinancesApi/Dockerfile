@@ -6,10 +6,9 @@ EXPOSE 5051
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["FinancesApi/FinancesApi.csproj", "FinancesApi/"]
-RUN dotnet restore "FinancesApi/FinancesApi.csproj"
+COPY ["FinancesApi/FinancesApi.csproj", "./"]
+RUN dotnet restore "FinancesApi.csproj"
 COPY . .
-WORKDIR "/src/FinancesApi"
 RUN dotnet build "FinancesApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
