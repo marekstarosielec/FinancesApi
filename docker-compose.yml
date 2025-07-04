@@ -3,7 +3,7 @@ version: '3.8'
 services:
   finances-api:
     build:
-      context: .
+      context: ./FinancesApi
       dockerfile: Dockerfile
     container_name: finances-api
     ports:
